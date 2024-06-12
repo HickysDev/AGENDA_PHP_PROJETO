@@ -26,7 +26,7 @@ include_once("templates/header.php");
                         <td scope="row"><?= $contato["telefone"] ?></td>
                         <td class="actions">
                         <a href="<?= $BASE_URL ?>show.php?id=<?= $contato["id"]?>"><i class="fas fa-eye check-icon"></i></a>
-                        <a href="#"><i class="far fa-edit edit-icon"></i></a>
+                        <a href="<?= $BASE_URL ?>edit.php?id=<?= $contato["id"]?>"><i class="far fa-edit edit-icon"></i></a>
                         <button type="submit" class="delete-btn"><i class="fas fa-times delete-icon"></i></button>
                         </td>
                     </tr>
@@ -34,7 +34,7 @@ include_once("templates/header.php");
             </tbody>
         </table>
     <?php else : ?>
-        <p id="empty-list-text">Ainda não há contatos na sua agenda, <a href="<?= $BASE_URL ?>create.php">clique aqui para adicionar</a>.</p>
+        <p id="empty-list-text">Ainda n&Atilde;&pound;o h&Atilde;&iexcl; contatos na sua agenda, <a href="<?= $BASE_URL ?>create.php">clique aqui para adicionar</a>.</p>
     <?php endif; ?>
 </div>
 
