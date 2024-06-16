@@ -2,8 +2,8 @@
 
 session_start();
 
-include ("conn.php");
-include ("url.php");
+include("conn.php");
+include("url.php");
 
 $data = $_POST;
 
@@ -44,11 +44,28 @@ if (!empty($data)) {
             $erro = $e->getMessage();
             echo "erro $erro";
         }
+    } elseif ($data["type"] === "delete") {
+        $id = $data["id"];
+
+        $sql = "DELETE FROM contatos WHERE id=:id";
+
+        $stmt = $conn->prepare($sql);
+
+        $stmt->bindParam(":id", $id);
+
+        try {
+            $stmt->execute();
+            $_SESSION["msg"] = "Contato excluido com sucesso";
+
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+            $erro = $e->getMessage();
+            echo "erro $erro";
+        }
     }
 
     // Redireciona para home
     header("Location: " . $BASE_URL . "../index.php");
-
 } else {
     $id;
 
@@ -68,7 +85,6 @@ if (!empty($data)) {
         $stmt->execute();
 
         $contatos = $stmt->fetch();
-
     } else {
 
         /* Retorno todos os contatos */
@@ -82,7 +98,6 @@ if (!empty($data)) {
         $stmt->execute();
         $contatos = $stmt->fetchAll();
     }
-
 }
 
 // Fechando conexao

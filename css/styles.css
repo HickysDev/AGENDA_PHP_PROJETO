@@ -46,6 +46,10 @@ table thead {
     color: #007bff;
 }
 
+.delete-form {
+    display: inline-block;
+}
+
 .delete-icon {
     color: #bd2130;
 
@@ -77,7 +81,7 @@ table thead {
     font-weight: bold;
 }
 
-/* Botão Voltar */
+/* Botï¿½o Voltar */
 
 #back-link-container{
     display: block;
